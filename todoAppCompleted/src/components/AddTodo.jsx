@@ -1,51 +1,38 @@
-import React from "react";
-import { useState } from "react";
+import React, { useContext } from "react";
+import { useRef } from "react";
 import { MdAddCircleOutline } from "react-icons/md";
+import { TodoItemsContext } from "../store/todo-items-store";
 
-function AddTODO({ onNewItem }) {
-  const [todoName, setTodoName] = useState('');
-  const [dueDate, setDueDate] = useState('');
+function AddTODO() {
+  const { addNewItem } = useContext(TodoItemsContext);
+  const todoNameElement = useRef();
+  const dueDateElement = useRef();
 
-  const handleNameChange = (event) => {
-    setTodoName(event.target.value);
-  };
-  const handleDateChange = (event) => {
-    setDueDate(event.target.value);
-  };
-  const handleAddButtonClick = () => {
-    onNewItem(todoName, dueDate);
-    setTodoName("");
-    setDueDate("");
+  const handleAddButtonClick = (event) => {
+    event.preventDefault();
+    const todoName = todoNameElement.current.value;
+    const dueDate = dueDateElement.current.value;
+    todoNameElement.current.value = "";
+    dueDateElement.current.value = "";
+
+    addNewItem(todoName, dueDate);
   };
 
   return (
     <div className="container text-center">
-      <form className="row kg-row">
+      <form className="row kg-row" onSubmit={handleAddButtonClick}>
         <div className="col-6">
           <input
             type="text"
             placeholder="Enter TODO Here"
-            value={todoName}
-            onChange={handleNameChange}
+            ref={todoNameElement}
           />
         </div>
         <div className="col-4">
-          <input
-            type="date"
-            name=""
-            id=""
-            value={dueDate}
-            onChange={handleDateChange}
-          />
+          <input type="date" name="" id="" ref={dueDateElement} />
         </div>
         <div className="col-2">
-          <button
-            type="button"
-            
-            onSubmit={handleAddButtonClick}
-            className="btn btn-success kg-button"
-            onClick={handleAddButtonClick}
-          >
+          <button type="submit" className="btn btn-success kg-button">
             <MdAddCircleOutline />
           </button>
         </div>
