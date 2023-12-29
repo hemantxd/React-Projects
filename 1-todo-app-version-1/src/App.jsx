@@ -4,7 +4,6 @@ import AddTodo from "./components/AddTodo";
 import TodoItems from "./components/TodoItems";
 import "./App.css";
 
-
 const todoItems = [
   {
     name: "Buy milk",
@@ -22,7 +21,6 @@ function App() {
       <AppName />
       <AddTodo />
       <TodoItems TodoItems={todoItems} />
-      
     </center>
   );
 }

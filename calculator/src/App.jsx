@@ -5,8 +5,8 @@ import Display from "./components/Display";
 function App() {
   return (
     <div className={styles.calculator}>
-      <Display/>
-      <ButtonsContainer/>
+      <Display />
+      <ButtonsContainer />
     </div>
   );
 }

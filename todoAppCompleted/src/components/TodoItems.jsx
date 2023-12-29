@@ -4,7 +4,7 @@ import TodoItem from "./TodoItem";
 import styles from "./TodoItems.module.css";
 
 const TodoItems = () => {
-  const {todoItems} = useContext(TodoItemsContext);
+  const { todoItems } = useContext(TodoItemsContext);
   return (
     <>
       <div className={styles.itemsContainer}>
@@ -13,7 +13,6 @@ const TodoItems = () => {
             key={item.name}
             todoDate={item.dueDate}
             todoName={item.name}
-            
           />
         ))}
       </div>

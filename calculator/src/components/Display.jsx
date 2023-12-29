@@ -1,7 +1,7 @@
-import React from 'react'
-import styles from './Display.module.css'
+import React from "react";
+import styles from "./Display.module.css";
 function Display() {
   return <input type="text" className={styles.display} />;
 }
 
-export default Display
+export default Display;
